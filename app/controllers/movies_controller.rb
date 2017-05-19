@@ -1,4 +1,7 @@
 class MoviesController < ApplicationController
+  skip_before_action :authenticate_user!, :only => [:index, :show]
+  #whitelist this controller's index and show actions from the authenticate_user requirement
+
   def index
     @movies = Movie.all
   end
